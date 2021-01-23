@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import dva from 'dva';
+import 'antd/dist/antd.css';
 import './index.css';
-import App from './App';
+import router from './router';
+import initModel from './models/init'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const app = dva();
+app.model(initModel);
+app.router(router);
+app.start('#root')
+
